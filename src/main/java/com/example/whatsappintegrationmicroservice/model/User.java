@@ -8,8 +8,8 @@ public class User
     private String userName;
     private String phoneNumber;
     private String email;
-    private Date birthday;
-    private Date joinDate;
+    private String birthday;
+    private String joinDate;
 
     public int getUserID() {
         return userID;
@@ -43,19 +43,19 @@ public class User
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
-    public Date getJoinDate() {
+    public String getJoinDate() {
         return joinDate;
     }
 
-    public void setJoinDate(Date joinDate) {
+    public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
     }
 }
