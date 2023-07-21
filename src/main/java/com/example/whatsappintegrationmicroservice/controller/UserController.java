@@ -12,6 +12,23 @@ public class UserController extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
+        String operation = (String)request.getParameter("operation");
+        if(operation.equals("SignIn"))
+        {
+            response.setContentType("text/html");
+            ServletContext sc = getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher("/userRegistration.jsp");
+            rd.forward(request, response);
+        }
+        if(operation.equals("HomePage"))
+        {
+            response.setContentType("text/html");
+            ServletContext sc = getServletContext();
+            RequestDispatcher rd = sc.getRequestDispatcher("/index.jsp");
+            rd.forward(request, response);
+        }
+
+
 
     }
 

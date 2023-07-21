@@ -1,47 +1,42 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Mac
-  Date: 2023/7/21
-  Time: 10:40 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <%@ include file="head.jsp" %>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 
 <div class="container mt-4 mb-4" style="min-height: 600px;">
     <div class="row justify-content-center">
         <div class="card" style="max-width: 600px;">
             <div class="row g-0">
-                <form class="row g-3" >
+                <form class="row g-3" action="./User/SignIn" method="post">
                     <div class="card-body">
                         <h3 class="card-title text-center border-bottom  pb-4">Sign In</h3>
                         <p class="card-text pt-2 pb-2">
                         <div class="row">
                             <div class="col-sm-12">
-                                <label for="firstName" class="col-form-label">User Name:</label>
-                                <input type="text" class="form-control" name="firstName" id="firstName">
+                                <label for="userName" class="col-form-label">User Name:</label>
+                                <input type="text" class="form-control" name="userName" id="userName" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="phone" class="col-form-label">Phone:</label>
-                                <input type="text" class="form-control" name="phone" id="phone">
+                                <input type="text" class="form-control" name="phone" id="phone" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="email" class="col-form-label">E-mail:</label>
-                                <input type="text" class="form-control" name="email" id="email">
+                                <input type="email" class="form-control" name="email" id="email" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <label for="birthday" class="col-form-label">Date of Birth:</label>
-                                <input type="text" class="form-control" name="birthday" id="birthday">
+                                <input type="date" class="form-control" name="birthday" id="birthday" required>
                             </div>
                         </div>
                         </p>
@@ -49,17 +44,17 @@
                         <p class="card-text pt-2 pb-2">
                         <div class="col-sm-12">
                             <label for="password" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" name="password" id="password" onChange="onChange()">
+                            <input type="password" class="form-control" name="password" id="password" onChange="onChange()" required>
                         </div>
                         <div class="col-sm-12">
                             <label for="confirm" class="col-form-label">Confirm Password:</label>
-                            <input type="password" class="form-control" name="confirm" id="confirm" onChange="onChange()">
+                            <input type="password" class="form-control" name="confirm" id="confirm" onChange="onChange()" required>
                         </div>
                         </p>
 
                         <p class="card-text pt-2 pb-2">
                         <div class="col-auto border-top mt-4 pt-4 text-center">
-                            <input type="submit" class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" value="next">
+                            <input type="submit" class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" value="submit">
                             <input type="reset"  class="btn btn-primary mb-3 btn-lg py-1 px-5 ms-4" value="reset">
                         </div>
                         </p>
@@ -70,6 +65,6 @@
     </div>
 </div>
 
-
+<%@ include file="footer.jsp" %>
 </body>
 </html>
