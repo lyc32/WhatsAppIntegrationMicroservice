@@ -42,7 +42,6 @@ public class UserService
                 }
             }
         }
-
     }
 
     public boolean signIn(User user, String password)
@@ -64,6 +63,7 @@ public class UserService
         }
         else
         {
+            currentUserID++;
             return true;
         }
     }

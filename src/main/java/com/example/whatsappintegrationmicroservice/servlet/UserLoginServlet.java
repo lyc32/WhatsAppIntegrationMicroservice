@@ -7,14 +7,14 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@WebServlet(name = "User/SignIn", value = "/User/SignIn")
-public class UserSignInServlet extends HttpServlet {
+@WebServlet(name = "User/Login", value = "/User/Login")
+public class UserLoginServlet extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 
     }
 
@@ -28,29 +28,23 @@ public class UserSignInServlet extends HttpServlet {
         String sqlPassword= servletContext.getInitParameter("SqlPassWord");
 
         UserService userService = new UserService(sqlDriver,sqlUrl,sqlUserName,sqlPassword);
-        User user = new User();
-        user.setUserName((String)request.getParameter("userName"));
-        user.setPhoneNumber((String)request.getParameter("phone"));
-        user.setEmail((String)request.getParameter("email"));
-        user.setBirthday((String)request.getParameter("birthday"));
-        SimpleDateFormat sdf = new SimpleDateFormat();
-        sdf.applyPattern("yyyy-MM-dd");
-        user.setJoinDate(sdf.format(new Date()));
 
-        boolean signInSuccessful = userService.signIn(user, (String)request.getParameter("password"));
+        User user = userService.login((String)request.getParameter("emailOrPhone"), (String)request.getParameter("password"));
 
         response.setContentType("text/html");
         ServletContext sc = getServletContext();
         RequestDispatcher rd = sc.getRequestDispatcher("/jumpPage.jsp");
-        if(signInSuccessful)
+        if(user != null)
         {
-            request.setAttribute("returnMessage", "Sign In Successful");
+            request.setAttribute("returnMessage", "Welcome Back " + user.getUserName());
             request.setAttribute("url", "../User?operation=HomePage");
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("User", user);
         }
         else
         {
-            request.setAttribute("returnMessage", "Sign In Failed");
-            request.setAttribute("url", "../User?operation=SignIn");
+            request.setAttribute("returnMessage", "Login Failed :( <br>Your ID and Password Do Not Match<br>Please Try Again");
+            request.setAttribute("url", "../User?operation=Login");
         }
         rd.forward(request, response);
     }

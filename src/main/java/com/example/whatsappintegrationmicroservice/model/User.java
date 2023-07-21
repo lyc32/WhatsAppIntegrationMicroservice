@@ -1,8 +1,9 @@
 package com.example.whatsappintegrationmicroservice.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User
+public class User implements Serializable
 {
     private int userID;
     private String userName;

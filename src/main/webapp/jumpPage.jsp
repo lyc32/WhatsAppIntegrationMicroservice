@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
   <%@ include file="head.jsp" %>
 </head>
 <body>
 <%@ include file="header.jsp" %>
 
-<div class="container mt-4 mb-4" style="min-height: 600px;">
+<div class="container mt-4 mb-4" style="min-height: 800px;">
   <div class="row justify-content-center">
     <div class="card" style="max-width: 600px; height: 250px;">
       <div class="row g-0 mb-2">

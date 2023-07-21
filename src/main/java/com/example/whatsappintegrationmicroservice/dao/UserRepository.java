@@ -52,9 +52,9 @@ public class UserRepository
         }
     }
 
-    public static User login(Connection connection, String email, String password)
+    public static User login(Connection connection, String emailOrPhone, String password)
     {
-        ResultSet resultSet = searchRecords(connection, "email='"+email+"' AND password='"+password+"'");
+        ResultSet resultSet = searchRecords(connection, "(email='"+emailOrPhone+"' OR phoneNumber = '" + emailOrPhone +"')AND password='"+password+"'");
         if(resultSet!=null)
         {
             User user = null;
@@ -69,6 +69,12 @@ public class UserRepository
                     else
                     {
                         user = new User();
+                        user.setUserID(Integer.parseInt(resultSet.getString("userID")));
+                        user.setUserName(resultSet.getString("userName"));
+                        user.setEmail(resultSet.getString("email"));
+                        user.setPhoneNumber(resultSet.getString("phoneNumber"));
+                        user.setBirthday(resultSet.getString("birthday"));
+                        user.setJoinDate(resultSet.getString("JoinDate"));
                     }
                 }
                 catch (SQLException e)
