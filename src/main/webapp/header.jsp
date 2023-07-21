@@ -5,10 +5,10 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Search Job</a>
+                    <a class="nav-link" href="#">Link1</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Post Job</a>
+                    <a class="nav-link" href="#">Link2</a>
                 </li>
             </ul>
         </div>

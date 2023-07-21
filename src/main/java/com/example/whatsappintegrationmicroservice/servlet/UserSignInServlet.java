@@ -45,7 +45,7 @@ public class UserSignInServlet extends HttpServlet {
         if(signInSuccessful)
         {
             request.setAttribute("returnMessage", "Sign In Successful");
-            request.setAttribute("url", "../User?operation=HomePage");
+            request.setAttribute("url", "../User?operation=Login");
         }
         else
         {
